@@ -75,7 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Wywołuje żądanie POST na serwer, aby zresetować planszę Sudoku
     function resetBoard() {
+<<<<<<< HEAD
         fetch("https://pure-stream-18400-20e1ee0431c7.herokuapp.com/api/sudoku/reset", {
+=======
+        fetch("https://pure-stream-18400-20e1ee0431c7.herokuapp.com/api/sudoku/", {
+>>>>>>> 3980ec8460b676a4bc7069b68fbcb261a1829f62
             method: "POST",
         }).then(() => fetchSudokuBoard());
     }
@@ -87,7 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Wywołuje żądanie GET na serwer, aby sprawdzić, czy gra jest ukończona
     function checkGameCompleted() {
+<<<<<<< HEAD
         fetch("https://pure-stream-18400-20e1ee0431c7.herokuapp.com/api/sudoku/check")
+=======
+        fetch("https://pure-stream-18400-20e1ee0431c7.herokuapp.com/api/sudoku/")
+>>>>>>> 3980ec8460b676a4bc7069b68fbcb261a1829f62
             .then((response) => response.json())
             .then((isGameCompleted) => {
                 if (isGameCompleted) {
