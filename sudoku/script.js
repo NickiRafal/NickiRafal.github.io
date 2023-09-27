@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Wywołuje żądanie GET na serwer, aby pobrać planszę Sudoku
     function fetchSudokuBoard() {
-        fetch("http://localhost:8080/api/sudoku/board")
+        fetch("https://pure-stream-18400-20e1ee0431c7.herokuapp.com/api/sudoku/board")
             .then((response) => response.json())
             .then((data) => {
                 displaySudokuBoard(data.board);
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Wywołuje żądanie POST na serwer, aby wykonać ruch gracza
     function makeMove(move) {
-        fetch("http://localhost:8080/api/sudoku/move", {
+        fetch("https://pure-stream-18400-20e1ee0431c7.herokuapp.com/api/sudoku/move", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Wywołuje żądanie POST na serwer, aby zresetować planszę Sudoku
     function resetBoard() {
-        fetch("http://localhost:8080/api/sudoku/reset", {
+        fetch("https://pure-stream-18400-20e1ee0431c7.herokuapp.com/api/sudoku/reset", {
             method: "POST",
         }).then(() => fetchSudokuBoard());
     }
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Wywołuje żądanie GET na serwer, aby sprawdzić, czy gra jest ukończona
     function checkGameCompleted() {
-        fetch("http://localhost:8080/api/sudoku/check")
+        fetch("https://pure-stream-18400-20e1ee0431c7.herokuapp.com/api/sudoku/check")
             .then((response) => response.json())
             .then((isGameCompleted) => {
                 if (isGameCompleted) {
