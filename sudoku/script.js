@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Wywołuje żądanie GET na serwer, aby pobrać planszę Sudoku
     function fetchSudokuBoard() {
-        fetch("sudoku.nicol79.repl.co/api/sudoku/board")
+        fetch("https://sudoku.nicol79.repl.co/api/sudoku/board")
             .then((response) => response.json())
             .then((data) => {
                 displaySudokuBoard(data.board);
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Wywołuje żądanie POST na serwer, aby wykonać ruch gracza
     function makeMove(move) {
-        fetch("sudoku.nicol79.repl.co/api/sudoku/move", {
+        fetch("https://sudoku.nicol79.repl.co/api/sudoku/move", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Wywołuje żądanie POST na serwer, aby zresetować planszę Sudoku
     function resetBoard() {
-        fetch("sudoku.nicol79.repl.co/api/sudoku/reset", {
+        fetch("https://sudoku.nicol79.repl.co/api/sudoku/reset", {
             method: "POST",
         }).then(() => fetchSudokuBoard());
     }
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Wywołuje żądanie GET na serwer, aby sprawdzić, czy gra jest ukończona
     function checkGameCompleted() {
-        fetch("sudoku.nicol79.repl.co/api/sudoku/check")
+        fetch("https://sudoku.nicol79.repl.co/api/sudoku/check")
             .then((response) => response.json())
             .then((isGameCompleted) => {
                 if (isGameCompleted) {
