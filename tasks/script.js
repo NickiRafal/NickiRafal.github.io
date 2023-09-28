@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var apiRoot = 'https://tasks.nicol79.repl.co/v1/tasks';
+  var apiRoot = 'https://nickirafal-979ec63c1611.herokuapp.com/v1/tasks';
   var datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   var tasksContainer = $('[data-tasks-container]');
 
