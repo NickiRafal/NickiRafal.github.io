@@ -5,7 +5,7 @@ app.use((req, res, next) => {
     next();
 })
 $(document).ready(function() {
-    var apiRoot = 'https://sudoku.nicol79.repl.co/api/sudoku/board'; // Zmień na rzeczywisty adres API Sudoku
+    var apiRoot = 'https://sudoku.nicol79.repl.co/api/sudoku'; // Zmień na rzeczywisty adres API Sudoku
     var sudokuBoard = $('#sudoku-board');
 
     // Inicjalizacja planszy Sudoku
