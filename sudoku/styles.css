@@ -57,4 +57,9 @@ table {
     background-color: #ddd;
     cursor: not-allowed;
 }
-
+.key {
+            display: inline-block;
+            width: 30px; /* Dostosuj szerokość według potrzeb */
+            height: 30px; /* Dostosuj wysokość według potrzeb */
+            margin: 5px; /* Dodaj margines między przyciskami */
+        }
