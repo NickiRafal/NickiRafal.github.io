@@ -1,94 +1,100 @@
 
-$(document).ready(function() {
-    var apiRoot = 'https://sudoku.nicol79.repl.co/api/sudoku'; // Zmień na rzeczywisty adres API Sudoku
-    var sudokuBoard = $('#sudoku-board');
 
-    // Inicjalizacja planszy Sudoku
+document.addEventListener("DOMContentLoaded", () => {
+    const sudokuBoard = document.getElementById("sudoku-board");
+    const resetButton = document.getElementById("reset-button");
+    const checkButton = document.getElementById("check-button");
+
+    // Pobieranie planszy Sudoku z serwera przy starcie gry
     fetchSudokuBoard();
 
+    // Wywołuje żądanie GET na serwer, aby pobrać planszę Sudoku
     function fetchSudokuBoard() {
-        $.ajax({
-            url: apiRoot + '/board',
-            method: 'GET',
-            success: displaySudokuBoard
-        });
+        fetch("https://sudoku.nicol79.repl.co/api/sudoku/board")
+            .then((response) => response.json())
+            .then((data) => {
+                displaySudokuBoard(data.board);
+            });
     }
 
-    function displaySudokuBoard(data) {
-        sudokuBoard.empty();
-        for (var i = 0; i < 9; i++) {
-            var row = $('<tr>');
-            for (var j = 0; j < 9; j++) {
-                var cell = $('<td>');
-                var value = data.board[i][j].value;
-                var isInitial = data.board[i][j].initial;
-                cell.text(value !== 0 ? value : '');
+    // Wyświetla planszę Sudoku na stronie
+    function displaySudokuBoard(board) {
+        sudokuBoard.innerHTML = "";
+        for (let i = 0; i < 9; i++) {
+            const row = document.createElement("tr");
+            for (let j = 0; j < 9; j++) {
+                const cell = document.createElement("td");
+                const value = board[i][j].value;
+                const isInitial = board[i][j].initial;
+                cell.textContent = value !== 0 ? value : "";
                 if (isInitial) {
-                    cell.addClass('given');
+                    cell.classList.add("given");
                 } else {
-                    cell.on('click', function() {
-                        handleCellClick(i, j);
-                    });
+                    cell.addEventListener("click", () => handleCellClick(i, j));
                 }
-                row.append(cell);
+                row.appendChild(cell);
             }
-            sudokuBoard.append(row);
+            sudokuBoard.appendChild(row);
         }
     }
 
+    // Obsługuje kliknięcie na komórkę planszy
     function handleCellClick(row, col) {
-        var value = parseInt(prompt('Podaj liczbę od 1 do 9'));
+        const value = parseInt(prompt("Podaj liczbę od 1 do 9"));
         if (value >= 1 && value <= 9) {
-            var move = { row: row, col: col, value: value };
+            const move = { row, col, value };
             makeMove(move);
         } else {
-            alert('Podaj prawidłową liczbę od 1 do 9.');
+            alert("Podaj prawidłową liczbę od 1 do 9.");
         }
     }
 
+    // Wywołuje żądanie POST na serwer, aby wykonać ruch gracza
     function makeMove(move) {
-        $.ajax({
-            url: apiRoot + '/move',
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(move),
-            success: function(isMoveValid) {
+        fetch("https://sudoku.nicol79.repl.co/api/sudoku/move", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(move),
+        })
+            .then((response) => response.json())
+            .then((isMoveValid) => {
                 if (isMoveValid) {
                     fetchSudokuBoard();
                 } else {
-                    alert('Niewłaściwy ruch. Spróbuj ponownie.');
+                    alert("Niewłaściwy ruch. Spróbuj ponownie.");
                 }
-            }
-        });
+            });
     }
 
-    $('#reset-button').on('click', function() {
+    // Obsługuje przycisk resetowania planszy
+    resetButton.addEventListener("click", () => {
         resetBoard();
     });
 
+    // Wywołuje żądanie POST na serwer, aby zresetować planszę Sudoku
     function resetBoard() {
-        $.ajax({
-            url: apiRoot + '/reset',
-            method: 'POST',
-            success: fetchSudokuBoard
-        });
+        fetch("https://sudoku.nicol79.repl.co/api/sudoku/reset", {
+            method: "POST",
+        }).then(() => fetchSudokuBoard());
     }
 
-    $('#check-button').on('click', function() {
+    // Obsługuje przycisk sprawdzania ukończenia gry
+    checkButton.addEventListener("click", () => {
         checkGameCompleted();
     });
 
+    // Wywołuje żądanie GET na serwer, aby sprawdzić, czy gra jest ukończona
     function checkGameCompleted() {
-        $.ajax({
-            url: apiRoot + '/check',
-            method: 'GET',
-            success: function(isGameCompleted) {
+        fetch("https://sudoku.nicol79.repl.co/api/sudoku/check")
+            .then((response) => response.json())
+            .then((isGameCompleted) => {
                 if (isGameCompleted) {
-                    alert('Gratulacje! Ukończyłeś grę Sudoku.');
+                    alert("Gratulacje! Ukończyłeś grę Sudoku.");
                 } else {
-                    alert('Gra nie jest jeszcze ukończona.');
+                    alert("Gra nie jest jeszcze ukończona.");
                 }
-            }
-        });
+            });
     }
 });
