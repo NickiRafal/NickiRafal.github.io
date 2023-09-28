@@ -68,6 +68,19 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
+  // Obsługuje kliknięcie na klawiaturę ekranową
+    function handleKeyboardClick(value) {
+        // Wartość z klawiatury została wybrana
+        const selectedCell = getSelectedCell(); // Zaimplementuj tę funkcję
+        if (selectedCell) {
+            const move = {
+                row: selectedCell.row,
+                col: selectedCell.col,
+                value: parseInt(value),
+            };
+            makeMove(move);
+        }
+    }
     // Obsługuje przycisk resetowania planszy
     resetButton.addEventListener("click", () => {
         resetBoard();
