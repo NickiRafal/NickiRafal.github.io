@@ -1,4 +1,12 @@
+export defailt async function handler(req,res){
+    res.setHeader('Access-Control-Allow-Origin','https://sudoku.nicol79.repl.co/api/sudoku/board')
+    res.setHeader('Access-Control-Allow-Methods','POST')
+    res.setHeader('Access-Control-Allow-Methods','GET')
+    res.setHeader('Access-Control-Allow-Headers','Content-Type')
+    //res.setHeader('Access-Control-Allow-Methods','GET')
 
+
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const sudokuBoard = document.getElementById("sudoku-board");
