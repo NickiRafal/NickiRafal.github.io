@@ -3,88 +3,12 @@
 
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css">
   <title>
     Rafał Nicki Portfolio
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family:Verdana, sans-serif;
-      background-color: #d2d2d2;
-      background-repeat:no-repeat;
-      background-position:top left;
-      background-attachment:fixed;
-      margin: 0;
-    }
-    h1{
-      font-family:Verdana, sans-serif;
-      color:#000000;
-      margin: 0;
-      padding: 20px;
-      text-shadow: 5px 5px 7px rgba(66, 68, 90, 1);
-      font-size:40px;font-style:normal;
-      font-weight:bold;
-    }
-    h2{
-      padding: 20px;
-    }
-    p {
-      font-family:Verdana, sans-serif;
-      font-size:14px;font-style:normal;
-      font-weight:normal;
-      margin: 0;
-      padding: 10px;
-    }
-    div{
-      background-color: #222222;
-      margin: 0;
-      padding: 10px;
-      color: #cccccc;
-      text-shadow: 5px 5px 6px rgba(70, 70, 70, 1);
-    }
-    img{
-      margin: 30px;
-      border-radius: 20px 20px 20px 20px;
-    }
-    junior{
-      color: #cccccc;
-    }
-    h3{
-      margin: 0;
-      padding: 30px;
-      text-shadow: 5px 5px 6px rgba(70, 70, 70, 1);
-    }
-    h2{
-      margin: 0;
-      padding: 30px;
-      text-shadow: 5px 5px 6px rgba(70, 70, 70, 1);
-    }
-    table{
-      margin: 0 auto;
-    }
-    a{
-      padding: 20px;
-      font-family:Verdana, sans-serif;
-      color:#000000;
-      text-decoration: none;
-    }
-    a:hover{
-      color: #3b2020;
-      text-shadow: 5px 5px 6px rgba(70, 70, 70, 1);
-    }
-    td{
-      vertical-align: top;
-    }
-    #zegar{
-      font-family:Verdana, sans-serif;
-      color:#000000;
-      margin: 0;
-      padding: 20px;
-      text-shadow: 5px 5px 7px rgba(66, 68, 90, 1);
-      font-size:40px;font-style:normal;
-      font-weight:bold;
-    }
-  </style>
+
 </head>
 
 <body>
@@ -98,14 +22,18 @@
 <div >
   <h2> Junior Java Developer</h2>
 </div>
-<table width="80%">
-  <tr>
-    <td><h3>O mnie</h3>
+<nav>
+  <a href="index.html">O mnie</a>
+  <a href="moje_projekty.html">Moje projekty</a>
+  <a href="kontakt.html">Kontakt</a>
+</nav>
+<table >
+  <tr >
+    <td ><h3>O mnie</h3></td>
+    </tr><tr>
+    <td>
 
-    </td>
-    <td><h3>Moje projekty</h3></td>
-  </tr><tr>
-  <td><img class="portret" src="img/portret.jpg" width ="300px">
+   <img class="portret" src="img/portret.jpg" width ="300px">
     <h3>Witaj!</h3>
     <p>Nazywam się <span class="highlight">Rafał Nicki</span>. Jestem doświadczonym programistą, który niedawno zakończył intensywny kurs Bootcamp Java Developer Plus, realizowany w okresie od <span class="highlight">05.04.2023 r.</span> do <span class="highlight">17.01.2024 r.</span> pod patronatem renomowanej firmy <span class="highlight">Codemy S.A.</span> w Wrocławiu.</p>
 
@@ -119,47 +47,14 @@
 
     <p>Zapraszam również do zapoznania się z moimi projektami. Dziękuję za odwiedzenie mojej strony. Z niecierpliwością czekam na nowe, ekscytujące możliwości zawodowe!</p>
   </td>
-  <td>
-    <a href="http://NickiRafal.github.io/tasks" target="_blank">Menager zadań</a><br>
-    <img src="img/crud.png" width="400px"><br>
-    <p>Opis: </p>
-    <hr>
-    <a href="http://NickiRafal.github.io/sudoku" target="_blank">Gra Sudoku</a><br>
-    <img src="img/sudoku.png" width="400px"><br>
-    <p>Opis: </p>
-    <hr>
-    <a href="http://NickiRafal.github.io/tasks" target="_blank">Kantor wymiany walut</a><br>
-    <img src="img/kantor.png" width="400px"><br>
-    <p>Opis: </p>
-    <hr>
-  </td>
-</tr>
-  <tr>
-    <td></td>
-    <td>
 
-    </td>
-  </tr>
+</tr>
+
 </table>
 <br>
-<footer><iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27916.863247337697!2d19.398628907565463!3d51.79655955641419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471bcaa1ed834bbb%3A0x70b06ae14f10d10f!2zQm9sZXPFgmF3YSBMaW1hbm93c2tpZWdvIDE3OC8xODAsIDkxLTAyNyDFgcOzZMW6!5e0!3m2!1spl!2spl!4v1705847594231!5m2!1spl!2spl"  style="border:0; width:100% ; height:200px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></footer>
+<div id="stopka">created by Rafał Nicki 2024</div>
 
-
-  <script>
-    function zegar() {
-    var data = new Date();
-    var godzina = data.getHours();
-    var min = data.getMinutes();
-    var sek = data.getSeconds();
-    var terazjest = ""+godzina+
-    ((min<10)?":0":":")+min+
-    ((sek<10)?":0":":")+sek;
-    document.getElementById("zegar").innerHTML = terazjest;
-    setTimeout("zegar()", 1000);
-  }
-    zegar();
-
-</script>
+<script src="js/app.js"></script>
 </body>
 </html>
 
